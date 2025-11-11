@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AllIdeasView: View {
-    @Binding var ideas: [Idea]
+    @Query var ideas: [Idea]
     @Binding var showingAddIdea: Bool
 
     var body: some View {
@@ -39,13 +40,12 @@ struct AllIdeasView: View {
     }
 
     private func deleteIdeas(at offsets: IndexSet) {
-        ideas.remove(atOffsets: offsets)
+//        ideas.remove(atOffsets: offsets)
     }
 }
 
 #Preview {
-    @Previewable @State var ideas = Idea.mockIdeas
     @Previewable @State var showingAdd = false
 
-    AllIdeasView(ideas: $ideas, showingAddIdea: $showingAdd)
+    AllIdeasView(showingAddIdea: $showingAdd)
 }

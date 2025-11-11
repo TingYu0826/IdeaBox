@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CompletedIdeasView: View {
-    @Binding var ideas: [Idea]
+    @Query var ideas: [Idea]
 
     var completedIdeas: [Idea] {
         ideas.filter { $0.isCompleted }
@@ -46,12 +47,11 @@ struct CompletedIdeasView: View {
 
     private func deleteIdeas(at offsets: IndexSet) {
         let idsToDelete = offsets.map { completedIdeas[$0].id }
-        ideas.removeAll { idea in idsToDelete.contains(idea.id) }
+//        ideas.removeAll { idea in idsToDelete.contains(idea.id) }
     }
 }
 
 #Preview {
-    @Previewable @State var ideas = Idea.mockIdeas
 
-    CompletedIdeasView(ideas: $ideas)
+    CompletedIdeasView()
 }
