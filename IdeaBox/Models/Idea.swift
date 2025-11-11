@@ -20,9 +20,9 @@ class Idea {
     init(
         id: UUID = UUID(),
         title: String,
-        detail:String,
+        detail:String = "",
         isCompleted: Bool = false,
-        sortOrder: Int
+        sortOrder: Int = 0
     ) {
         self.id = id
         self.title = title

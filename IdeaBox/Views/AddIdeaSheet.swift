@@ -10,6 +10,7 @@ import SwiftData
 
 struct AddIdeaSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     @State private var title = ""
     @State private var detail = ""
 
@@ -36,8 +37,8 @@ struct AddIdeaSheet: View {
 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-//                        let newIdea = Idea(title: title, description: description)
-//                        onSave(newIdea)
+                        let newIdea = Idea(title: title)
+                        modelContext.insert(newIdea)
                         dismiss()
                     }
                     .disabled(title.isEmpty)
